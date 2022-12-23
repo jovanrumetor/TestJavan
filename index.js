@@ -28,6 +28,8 @@ app.use((err, req, res, next) => {
   return res.status(errorStatus).json({ success: false, status:errorStatus, message: errorMessage, stack: err.stack,})
 })
 
-app.listen(8800, ()=> {
-  console.log ("Server Running On Port 8800")
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, ()=> {
+  console.log ("Server Running")
 })

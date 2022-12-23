@@ -11,7 +11,7 @@ const db = {};
 
 // let sequelize;
 
-let sequelize = new Sequelize('postgresql://postgres:5RwaC7NEX68ngjxb5sUN@containers-us-west-31.railway.app:7677/railway',
+let sequelize = new Sequelize(process.env.DATABASE_URL,
 {
   define: {
     quoteIdentifiers: false,

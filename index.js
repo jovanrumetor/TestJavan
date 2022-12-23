@@ -8,9 +8,9 @@ const cors = require('cors')
 
 const app = express();
 
-// app.get("/", (req, res) => {
-//   res.send('hello world')
-// })
+app.get("/", (req, res) => {
+  res.send('list endpoints')
+})
 
 
 //middleware

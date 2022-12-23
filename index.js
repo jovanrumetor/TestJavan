@@ -5,12 +5,10 @@ const familyRoute = require('./routes/familyRoute.js')
 const assetRoute = require('./routes/assetRoute.js')
 const cookieParser = require('cookie-parser')
 const cors = require('cors')
-
+const endpoints = require('./endpoints.js')
 const app = express();
 
-app.get("/", (req, res) => {
-  res.send('list endpoints')
-})
+
 
 
 //middleware
@@ -18,7 +16,9 @@ app.use(cors())
 app.use(cookieParser());
 app.use(express.json());
 
-// app.use("/", salaryRoute);
+app.get("/", (req, res) => {
+  res.json(endpoints)
+})
 app.use("/api/family", familyRoute);
 app.use("/api/asset", assetRoute);
 
@@ -31,5 +31,5 @@ app.use((err, req, res, next) => {
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, ()=> {
-  console.log ("Server Running")
+  console.log (`Server Running on Port ${PORT}`)
 })

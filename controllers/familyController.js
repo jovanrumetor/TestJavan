@@ -1,7 +1,9 @@
-const { Family, Asset } = require('../models');
+const { family, asset } = require('../models');
 const sequelize = require('sequelize');
 const { createError } = require('../utils/error.js')
 
+let Family = family;
+let Asset = asset;
 
 exports.getFamilies = async (req, res, next) => {
   try {
@@ -15,8 +17,8 @@ exports.getFamilies = async (req, res, next) => {
 exports.getFamily = async (req, res, next) => {
   try {
     const family = await Family.findByPk(req.params.id);
-
-    res.status(200).json({status: "Success", family: "Success", family});
+    if(!family) return next(createError(404, "Family not exist"));
+    res.status(200).json({status: "Success", message: "Success", family});
   } catch (error) {
     next(error);
   }
@@ -58,12 +60,12 @@ exports.familyAssets = async (req, res, next) => {
   try {
     
     const family = await Family.findAll({
-    attributes: [ 'id', 'name', 'gender', 'parent',[sequelize.fn('SUM',sequelize.col('Assets.price')), 'total price']],  
+    attributes: [ 'id', 'name', 'gender', 'parent',[sequelize.fn('SUM',sequelize.col('assets.price')), 'total price']],  
     include: [{
       model: Asset,
       attributes: [],
     }],
-    group: ['Family.id'],
+    group: ['family.id'],
     raw: true,
     order: [[ 'total price', 'ASC']]});
     res.status(200).json({status: "Success", message: "Success", family});

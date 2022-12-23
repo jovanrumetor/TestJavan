@@ -1,5 +1,8 @@
-const { Asset, Family } = require('../models');
+const { asset, family } = require('../models');
 const { createError } = require('../utils/error.js')
+
+let Family = family;
+let Asset = asset;
 
 
 exports.getAssets = async (req, res, next) => {
@@ -26,7 +29,7 @@ exports.createAsset = async (req, res, next) => {
     const family = await Family.findByPk(req.params.id);
     if(!family) return next(createError(404, "Family not exist"));
     const asset = {
-      familyId: req.params.id,
+      familyid: req.params.id,
       ...req.body
     }
     const data = await Asset.create(asset);

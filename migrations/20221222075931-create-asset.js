@@ -15,7 +15,9 @@ module.exports = {
         references: {
           model: 'Families',
           key: 'id'
-        }
+        },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
       },
       name: {
         allowNull: false,

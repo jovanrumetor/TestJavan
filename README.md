@@ -10,10 +10,11 @@ TO RUN THIS APPLICATION
 
 1. Create database in POSTGRESQL named "javan".
 2. Open the project directory in Terminal/Command Promt or any CLI you usually use and run "npm install" command, it will install all the necessary dependancy the project needs.
-3. run "npm start" to start running the project.
-4. run "npm run migrate" to automatically create tables that we are going to use.
-5. run "npm run seed" to automatically populates database with the dummy data we are going to use.
-6. after those, if there's no problem you can start testing the project. i already provided postman collection to test locally, the name is "Javan.postman_collection.json" that you can find in this repository.
-7. Happy Testing.
+3. edit .env variable to matching to your local enviroment
+4. run "npm start" to start running the project.
+5. run "npm run migrate" to automatically create tables that we are going to use.
+6. run "npm run seed" to automatically populates database with the dummy data we are going to use.
+7. after those, if there's no problem you can start testing the project. i already provided postman collection to test locally, the name is "Javan.postman_collection.json" that you can find in this repository.
+8. Happy Testing.
 
 So that how to test this project, you can test is online or local. if there's a problem with the project, any problem you can contact me so i can help or fix it. THANK YOU.
